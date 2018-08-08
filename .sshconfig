@@ -1,0 +1,16 @@
+ForwardAgent yes
+KeepAlive yes
+
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+
+Host jump
+  Hostname jump.adnxs.net
+
+Host jump_bb
+  User kwu
+  Hostname 269.bm-bbarg.user.nym2.adnexus.net
+  ForwardAgent yes
+  ProxyCommand ssh -tA jump -W %h:%p
