@@ -1,25 +1,45 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
+set encoding=utf-8
+call plug#begin()
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'justinmk/vim-sneak'
+Plug 'matze/vim-move'
+Plug 'sheerun/vim-polyglot'
+Plug 'joshdick/onedark.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdtree'
+Plug 'rakr/vim-two-firewatch'
+Plug 'vim-syntastic/syntastic'
+Plug 'ayu-theme/ayu-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'Valloric/YouCompleteMe', { 'dir': '~/.vim/plugged/YouCompleteMe', 'do': './install.py --clang-completer' }
+Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'flazz/vim-colorschemes'
+call plug#end()
 set number
 set hlsearch
-set autoindent
-filetype indent on
-set tabstop=4
-set smartindent
-set autoindent
-set showmatch
+set ruler
+set laststatus=2
+colorscheme valloric
+map :t :Tags
+map :f :Files
+map :b :Buffers
+map :a :Ag
+set backspace=indent,eol,start
+if !has('gui_running')
+  set t_Co=256
+endif
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+autocmd FileType javascript setlocal ts=2 shiftwidth=2 expandtab list listchars=tab:>-
+autocmd FileType c,cpp,make,automake setlocal cinoptions=+4,(4:0 cindent noexpandtab shiftwidth=8 tabstop=8 softtabstop=8
